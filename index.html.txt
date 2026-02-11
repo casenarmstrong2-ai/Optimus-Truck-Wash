@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Optimus Truck Wash | Large Vehicle & Fleet Washing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #0f172a;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --danger: #f97373;
+      --radius-xl: 1.5rem;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.75);
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 40%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img, video {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout utility */
+    .wrapper {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 0.75));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .brand-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #0ea5e9 40%, #0369a1 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.35);
+      font-size: 1.1rem;
+    }
+
+    .brand-text-main {
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .85rem;
+    }
+
+    .brand-text-sub {
+      font-size: .7rem;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: .12em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      font-size: .85rem;
+    }
+
+    nav a {
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: all 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    nav a.cta {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #020617;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+    }
+
+    nav a.cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(56, 189, 248, 0.5);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 3.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.25rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.18rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: var(--muted);
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      margin-bottom: 0.85rem;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent);
+    }
+
+    .eyebrow span.badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.25);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      line-height: 1.08;
+      margin-bottom: 0.9rem;
+      letter-spacing: .02em;
+    }
+
+    .hero h1 span.highlight {
+      background: linear-gradient(135deg, #38bdf8 0, #a855f7 50%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 34rem;
+      font-size: .95rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      font-size: .8rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-meta-item {
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,.95);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      margin-bottom: 0.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: .9rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      gap: 0.45rem;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #020617;
+      box-shadow: 0 14px 35px rgba(56, 189, 248, 0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(56, 189, 248, 0.6);
+    }
+
+    .btn-outline {
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--muted);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .btn-outline:hover {
+      color: var(--text);
+      border-color: var(--accent);
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.2), rgba(15, 23, 42, 0.9));
+    }
+
+    .hero-note {
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    .hero-media {
+      position: relative;
+    }
+
+    .hero-video-card {
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 5% 0, rgba(56, 189, 248, 0.35), transparent 60%);
+      padding: 0.7rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .hero-video-inner {
+      border-radius: calc(var(--radius-xl) - 0.4rem);
+      overflow: hidden;
+      background: #000;
+      position: relative;
+    }
+
+    .hero-video-inner::after {
+      content: "Tour the Optimus Tunnel";
+      position: absolute;
+      left: 0.75rem;
+      bottom: 0.75rem;
+      padding: 0.28rem 0.65rem;
+      font-size: .75rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      color: var(--muted);
+    }
+
+    .hero-floating {
+      position: absolute;
+      right: -0.4rem;
+      bottom: -0.8rem;
+      width: 180px;
+      padding: 0.65rem 0.75rem;
+      border-radius: 1.1rem;
+      background: rgba(15, 23, 42, 0.97);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.85);
+      font-size: .75rem;
+    }
+
+    .hero-floating strong {
+      display: block;
+      margin-bottom: 0.18rem;
+      font-size: .8rem;
+    }
+
+    .hero-floating span {
+      color: var(--muted);
+    }
+
+    /* Sections */
+    section {
+      padding: 2.8rem 0 2.4rem;
+    }
+
+    section:nth-of-type(even) {
+      background: radial-gradient(circle at top, #020617 0, #020617 50%, #020617 100%);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.35rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .section-header p {
+      font-size: .85rem;
+      color: var(--muted);
+      max-width: 28rem;
+    }
+
+    /* Wash packages */
+    .pricing-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 1.5rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tab-pill {
+      padding: 0.44rem 0.9rem;
+      border-radius: 999px;
+      font-size: .8rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-pill.active {
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), rgba(15, 23, 42, 0.95));
+      border-color: var(--accent);
+      color: var(--text);
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.35);
+    }
+
+    .wash-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 1), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 1.2rem 1.2rem 1.1rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at -10% -10%, rgba(56, 189, 248, 0.18), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .card-body {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill-caption {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: .7rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+    }
+
+    .pill-caption span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .card span.subtitle {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+      margin: 0.5rem 0 0.6rem;
+    }
+
+    .price-row .price {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .price-row .unit {
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    .features {
+      list-style: none;
+      margin: 0.4rem 0 0.6rem;
+      padding-left: 0;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .features li {
+      margin-bottom: 0.18rem;
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .features li::before {
+      content: "•";
+      color: var(--accent);
+      margin-top: 0.02rem;
+    }
+
+    .card-footnote {
+      font-size: .7rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    .badge-basic {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.18);
+      border: 1px solid rgba(59, 130, 246, 0.65);
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      margin-bottom: 0.3rem;
+    }
+
+    .badge-basic span {
+      font-size: .8rem;
+    }
+
+    /* Right column: highlights */
+    .package-notes {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 1), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius-xl);
+      padding: 1.25rem 1.3rem 1.1rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .package-notes h3 {
+      font-size: .95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .package-notes p {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .badge-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .badge {
+      font-size: .7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+    }
+
+    .badge.accent {
+      border-color: var(--accent);
+      color: var(--text);
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.2), rgba(15, 23, 42, 0.95));
+    }
+
+    .package-notes ul {
+      list-style: none;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 0.65rem;
+    }
+
+    .package-notes ul li {
+      margin-bottom: 0.25rem;
+    }
+
+    .package-notes strong {
+      color: #e5e7eb;
+    }
+
+    /* Media section */
+    .media-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,0.9fr);
+      gap: 1.6rem;
+    }
+
+    .media-card {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 1), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .media-card h3 {
+      font-size: .95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .media-card p {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .media-tagline {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-top: 0.55rem;
+    }
+
+    /* Fleet services */
+    .fleet-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,0.9fr);
+      gap: 1.4rem;
+    }
+
+    .fleet-list {
+      list-style: none;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    .fleet-list li {
+      margin-bottom: 0.45rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .fleet-list li::before {
+      content: "▹";
+      color: var(--accent);
+      margin-top: 0.02rem;
+    }
+
+    .fleet-highlight {
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.15rem;
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      font-size: .8rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* Location & hours */
+    .info-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 1.5rem;
+    }
+
+    .info-card {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 1), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: .85rem;
+      color: var(--muted);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .info-card h3 {
+      font-size: .95rem;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .info-row {
+      margin-bottom: 0.45rem;
+    }
+
+    .info-row strong {
+      color: var(--text);
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .8rem;
+      margin-top: 0.3rem;
+    }
+
+    .hours-table td {
+      padding: 0.15rem 0;
+      color: var(--muted);
+    }
+
+    .hours-table td:first-child {
+      width: 30%;
+      color: #cbd5f5;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 1.5rem;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      font-size: .8rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: var(--muted);
+    }
+
+    input, textarea, select {
+      border-radius: 0.9rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.95);
+      padding: 0.6rem 0.7rem;
+      color: var(--text);
+      outline: none;
+      font-size: .8rem;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.6);
+    }
+
+    textarea {
+      min-height: 90px;
+    }
+
+    .contact-meta {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .contact-meta p {
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      padding: 1.6rem 0 2.3rem;
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    footer .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    footer a {
+      color: var(--muted);
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .pricing-layout,
+      .media-grid,
+      .fleet-grid,
+      .info-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.8rem;
+      }
+
+      .hero-floating {
+        position: static;
+        margin-top: 0.7rem;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 720px) {
+      nav ul {
+        display: none;
+      }
+
+      header {
+        padding-bottom: 0.4rem;
+      }
+
+      .hero {
+        padding-top: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrapper nav">
+    <div class="brand">
+      <div class="brand-badge">O</div>
+      <div>
+        <div class="brand-text-main">Optimus Truck Wash</div>
+        <div class="brand-text-sub">Large Vehicle Wash &amp; Detail</div>
+      </div>
+    </div>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#top">Home</a></li>
+        <li><a href="#packages">Wash Packages</a></li>
+        <li><a href="#fleet">Fleet Accounts</a></li>
+        <li><a href="#media">Videos</a></li>
+        <li><a href="#info">Location &amp; Hours</a></li>
+        <li><a href="#contact" class="cta">Book a Wash</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="top" class="hero">
+    <div class="wrapper hero-grid">
+      <div>
+        <div class="eyebrow">
+          <span class="badge-dot"></span>
+          Tunnel Wash · Undercarriage · Spot-Free Rinse
+        </div>
+        <h1>
+          Keep your <span class="highlight">rig, RV, or fleet</span> looking brand-new.
+        </h1>
+        <p>
+          Optimus Truck Wash is built for large vehicles: semis, box trucks, RVs, heavy-duty pickups,
+          and more. Drive through our high-pressure tunnel for a fast, safe, and consistent clean that
+          keeps your investment protected and your brand shining on the road.
+        </p>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span>⏱</span> <span>In-out in just minutes*</span>
+          </div>
+          <div class="hero-meta-item">
+            <span>🧼</span> <span>Professional soaps &amp; spot-free rinse</span>
+          </div>
+          <div class="hero-meta-item">
+            <span>🚛</span> <span>Built for large vehicles &amp; fleets</span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">
+            Book a Wash
+            <span>→</span>
+          </a>
+          <a href="#packages" class="btn btn-outline">
+            View Wash Packages
+          </a>
+        </div>
+
+        <p class="hero-note">
+          *Actual time may vary based on traffic, package, and add-ons.
+        </p>
+      </div>
+
+      <div class="hero-media" aria-label="Intro video of Optimus Truck Wash">
+        <div class="hero-video-card">
+          <div class="hero-video-inner">
+            <!-- INTRO VIDEO -->
+            <video controls muted playsinline preload="metadata">
+              <!-- Replace src path as needed when deploying -->
+              <source src="Introduction - Optimus Truck Wash.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div class="hero-floating">
+          <strong>Drive-Through Optimus Experience</strong>
+          <span>Watch how our tunnel targets undercarriage, sides, and roof to give your vehicle a full-coverage clean.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section id="packages">
+    <div class="wrapper">
+      <div class="section-header">
+        <h2>Wash Packages</h2>
+        <p>
+          Simple, clear pricing for every size of vehicle — from work vans to full-length tractor-trailers.
+          Choose the package that fits your rig and the level of clean you want.
+        </p>
+      </div>
+
+      <div class="pricing-layout">
+        <div>
+          <!-- "Tabs" by size category -->
+          <div class="tabs" aria-label="Vehicle categories">
+            <button class="tab-pill active" type="button">Large 25'–40'</button>
+            <button class="tab-pill" type="button">Medium &lt; 25'</button>
+            <button class="tab-pill" type="button">Large 40'+</button>
+            <button class="tab-pill" type="button">RV / Camper</button>
+            <button class="tab-pill" type="button">Basic $12</button>
+          </div>
+
+          <div class="wash-cards">
+            <!-- LARGE VEHICLE 25' TO 40' -->
+            <article class="card">
+              <div class="card-body">
+                <div class="pill-caption">
+                  <span class="dot"></span> Large Vehicle 25'–40'
+                </div>
+                <h3>Economy Wash</h3>
+                <span class="subtitle">For vehicles 25' to 40'</span>
+                <div class="price-row">
+                  <span class="price">$30</span>
+                  <span class="unit">per vehicle</span>
+                </div>
+                <ul class="features">
+                  <li>Undercarriage rinse</li>
+                  <li>Multi-step detergent wash</li>
+                  <li>High-pressure rinse</li>
+                  <li>Spot-free final rinse</li>
+                </ul>
+                <p class="card-footnote">
+                  Perfect for quick, regular cleans between long hauls.
+                </p>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-body">
+                <div class="pill-caption">
+                  <span class="dot"></span> Large Vehicle 25'–40'
+                </div>
+                <h3>Ultimate Wash</h3>
+                <span class="subtitle">Deeper clean &amp; extra shine</span>
+                <div class="price-row">
+                  <span class="price">$40</span>
+                  <span class="unit">per vehicle</span>
+                </div>
+                <ul class="features">
+                  <li>Full Economy Wash features</li>
+                  <li>Enhanced detergents and dwell time</li>
+                  <li>High-pressure pass for stubborn road film</li>
+                  <li>Finishing sealant for added gloss</li>
+                </ul>
+                <p class="card-footnote">
+                  Great before deliveries, inspections, or long trips.
+                </p>
+              </div>
+            </article>
+
+            <!-- MEDIUM VEHICLE UNDER 25' -->
+            <article class="card">
+              <div class="card-body">
+                <div class="pill-caption">
+                  <span class="dot"></span> Medium Vehicle &lt; 25'
+                </div>
+                <h3>Economy Wash</h3>
+                <span class="subtitle">For vehicles under 25'</span>
+                <div class="price-row">
+                  <span class="price">$20</span>
+                  <span class="unit">per vehicle</span>
+                </div>
+                <ul class="features">
+                  <li>Undercarriage rinse</li>
+                  <li>Detergent wash &amp; high-pressure rinse</li>
+                  <li>Spot-free rinse</li>
+                </ul>
+                <p class="card-footnote">
+                  Ideal for work vans, service trucks, and dually pickups.
+                </p>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-body">
+                <div class="pill-caption">
+                  <span class="dot"></span> Medium Vehicle &lt; 25'
+                </div>
+                <h3>Ultimate Wash</h3>
+                <span class="subtitle">Extra protection &amp; shine</span>
+                <div class="price-row">
+                  <span class="price">$25</span>
+                  <span class="unit">per vehicle</span>
+                </div>
+                <ul class="features">
+                  <li>All Economy features</li>
+                  <li>Additional soap passes where needed</li>
+                  <li>High-pressure focus on bug &amp; grime zones</li>
+                  <li>Finishing sealant</li>
+                </ul>
+                <p class="card-footnote">
+                  Best for owner-operators and light-duty fleet vehicles.
+                </p>
+              </div>
+            </article>
+
+            <!-- LARGE VEHICLE OVER 40' -->
+            <article class="card">
+              <div class="card-body">
+                <div class="pill-caption">
+                  <span class="dot"></span> Large Vehicle 40'+</div>
+                <h3>Economy Wash</h3>
+                <span class="subtitle">For vehicles over 40'</span>
+                <div class="price-row">
+                  <span class="price">$60</span>
+                  <span class="unit">per vehicle</span>
+                </div>
+                <ul class="features">
+                  <li>Undercarriage rinse along full length</li>
+                  <li>Detergent wash tailored for tall trailers</li>
+                  <li>High-pressure rinse &amp; spot-free finish</li>
+                </ul>
+                <p class="card-footnote">
+                  Built for full-length tractor-trailers and long rigs.
+                </p>
+              </div>
+            </article>
+
+            <!-- RV / CAMPER -->
+            <article class="card">
+              <div class="card-body">
+                <div class="pill-caption">
+                  <span class="dot"></span> RV / Camper Wash</div>
+                <h3>Ultimate RV Wash</h3>
+                <span class="subtitle">For RVs &amp; campers 20'–40'</span>
+                <div class="price-row">
+                  <span class="price">$45</span>
+                  <span class="unit">per vehicle</span>
+                </div>
+                <ul class="features">
+                  <li>Undercarriage rinse to chase away road salt</li>
+                  <li>Detergent wash safe for RV finishes</li>
+                  <li>High-pressure rinse &amp; spot-free final pass</li>
+                </ul>
+                <p class="card-footnote">
+                  Ideal before storing for the season or heading out on vacation.
+                </p>
+              </div>
+            </article>
+
+            <!-- BASIC $12 WASH -->
+            <article class="card">
+              <div class="card-body">
+                <div class="badge-basic">
+                  <span>Quick Clean</span> · <span>$12 Basic Wash</span>
+                </div>
+                <h3>Basic Wash</h3>
+                <span class="subtitle">Fast, budget-friendly refresh</span>
+                <div class="price-row">
+                  <span class="price">$12</span>
+                  <span class="unit">per vehicle</span>
+                </div>
+                <ul class="features">
+                  <li>Undercarriage rinse</li>
+                  <li>Power wash exterior</li>
+                  <li>Spot-free rinse</li>
+                </ul>
+                <p class="card-footnote">
+                  A perfect quick rinse between full washes when you just need the heavy grime knocked down.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <aside class="package-notes">
+          <h3>How to choose the right wash</h3>
+          <p>
+            Not sure which package your vehicle fits into? Use the quick guidelines below or talk with our team when you arrive —
+            we’ll help you pick the right option in seconds.
+          </p>
+
+          <div class="badge-stack">
+            <span class="badge accent">Medium &lt; 25' · Vans · Service Trucks</span>
+            <span class="badge">Large 25'–40' · Straight Trucks · Small Box</span>
+            <span class="badge">Large 40'+ · Tractor-Trailers</span>
+            <span class="badge">RVs &amp; Campers · 20'–40'</span>
+            <span class="badge">Basic $12 · Any size, light clean</span>
+          </div>
+
+          <ul>
+            <li><strong>Economy</strong> — quickest way to remove road film, salt, and grime.</li>
+            <li><strong>Ultimate</strong> — adds extra cleaning power and protection for paint and graphics.</li>
+            <li><strong>Basic $12</strong> — undercarriage, power wash, and spot-free rinse when you just need a refresh.</li>
+          </ul>
+
+          <p>
+            Fleet pricing, frequent-wash discounts, and add-ons (bug treatment, extra rinse, etc.) are available on request.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLEET SERVICES -->
+  <section id="fleet">
+    <div class="wrapper">
+      <div class="section-header">
+        <h2>Fleet Accounts</h2>
+        <p>
+          Whether you run five trucks or fifty, Optimus Truck Wash keeps them on a consistent wash schedule so your brand
+          always shows up clean and professional.
+        </p>
+      </div>
+
+      <div class="fleet-grid">
+        <div>
+          <ul class="fleet-list">
+            <li>Custom wash schedules for your operation — weekly, bi-weekly, or as needed.</li>
+            <li>Simple, consolidated billing with itemized invoices by unit or PO.</li>
+            <li>Fast in-and-out tunnel flow built around large vehicle heights and lengths.</li>
+            <li>Priority service windows to minimize driver wait times.</li>
+            <li>Support for mixed fleets: box trucks, semis, pickups, and service vehicles.</li>
+          </ul>
+        </div>
+
+        <div class="fleet-highlight">
+          <strong>Interested in a fleet partnership?</strong>
+          <p>
+            Use the form below to note your company name, approximate fleet size, and preferred wash frequency.
+            We’ll follow up with a simple proposal and pricing structure tailored to your operation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA / VIDEOS -->
+  <section id="media">
+    <div class="wrapper">
+      <div class="section-header">
+        <h2>See Optimus in Action</h2>
+        <p>
+          Watch our wash tunnel handle large vehicles from all angles. These short clips highlight the undercarriage,
+          side, and roof coverage that set Optimus Truck Wash apart.
+        </p>
+      </div>
+
+      <div class="media-grid">
+        <div class="media-card">
+          <h3>Full Walkthrough</h3>
+          <p>
+            Take a full tour of the Optimus Truck Wash experience from entry to spot-free exit. Great to show drivers what
+            to expect the first time they visit.
+          </p>
+          <video controls muted playsinline preload="metadata">
+            <!-- Intro or long-form video -->
+            <source src="Introduction - Optimus Truck Wash.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <p class="media-tagline">
+            Tip: embed this video on social media and your Google Business profile to show off your facility.
+          </p>
+        </div>
+
+        <div class="media-card">
+          <h3>Short Highlight Reel</h3>
+          <p>
+            A fast, punchy overview of Optimus Truck Wash perfect for ads, stories, and quick shares. Shows off the tunnel
+            lighting, water pressure, and spot-free results.
+          </p>
+          <video controls muted playsinline preload="metadata" loop>
+            <!-- Short reel -->
+            <source src="Short Reel - Optimus Truck Wash.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <p class="media-tagline">
+            Add this clip to your homepage hero, social posts, or a QR code on flyers to let customers preview the wash.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION & HOURS -->
+  <section id="info">
+    <div class="wrapper">
+      <div class="section-header">
+        <h2>Location &amp; Hours</h2>
+        <p>
+          Easy in, easy out — our site is designed for large vehicle access with clear entry and exit lanes and plenty of room
+          to maneuver.
+        </p>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Where to Find Us</h3>
+          <div class="info-row">
+            <strong>Address:</strong><br />
+            <!-- Replace with your actual address -->
+            123 Optimus Way, Your City, MI 00000
+          </div>
+          <div class="info-row">
+            <strong>Phone:</strong><br />
+            <!-- Replace with your phone number -->
+            (XXX) XXX-XXXX
+          </div>
+          <div class="info-row">
+            <strong>Access:</strong><br />
+            Designed for semis, RVs, and large vehicles with wide turning radius and clear approach lanes.
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>Hours of Operation</h3>
+          <p>Update these hours to match your current schedule.</p>
+          <table class="hours-table" aria-label="Hours of operation">
+            <tbody>
+              <tr><td>Mon–Fri</td><td>7:00 AM – 7:00 PM</td></tr>
+              <tr><td>Saturday</td><td>8:00 AM – 6:00 PM</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrapper">
+      <div class="section-header">
+        <h2>Book a Wash or Request Fleet Pricing</h2>
+        <p>
+          Send us a quick note with your vehicle details and desired wash package. We’ll confirm timing and answer any
+          questions before you roll through.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <form>
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" />
+          </div>
+          <div class="form-field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" placeholder="Best number to reach you" />
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input id="email" name="email" placeholder="you@example.com" />
+          </div>
+          <div class="form-field">
+            <label for="company">Company / Fleet (optional)</label>
+            <input id="company" name="company" placeholder="Company or carrier name" />
+          </div>
+          <div class="form-field">
+            <label for="vehicle">Vehicle Type</label>
+            <select id="vehicle" name="vehicle">
+              <option value="">Select a vehicle</option>
+              <option>Medium Vehicle &lt; 25'</option>
+              <option>Large Vehicle 25'–40'</option>
+              <option>Large Vehicle 40'+</option>
+              <option>RV / Camper</option>
+              <option>Other (describe below)</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="package">Preferred Package</label>
+            <select id="package" name="package">
+              <option value="">Select a package</option>
+              <option>Basic Wash – $12</option>
+              <option>Economy – Medium Vehicle</option>
+              <option>Ultimate – Medium Vehicle</option>
+              <option>Economy – Large Vehicle 25'–40'</option>
+              <option>Ultimate – Large Vehicle 25'–40'</option>
+              <option>Economy – Large Vehicle 40'+</option>
+              <option>Ultimate RV – RV / Camper</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="message">Details</label>
+            <textarea id="message" name="message" placeholder="Tell us how many vehicles, any special requests, or your ideal date/time."></textarea>
+          </div>
+          <div class="form-field full">
+            <button class="btn btn-primary" type="submit">
+              Submit Request
+            </button>
+          </div>
+        </form>
+
+        <div class="contact-meta">
+          <p><strong>Call ahead</strong> for same-day washes on multi-vehicle fleets or RVs during peak travel seasons.</p>
+          <p>
+            Have questions about clearances, special equipment, or custom wash needs?
+            Reach out and we’ll confirm whether your setup will comfortably fit through our tunnel.
+          </p>
+          <p>
+            You can also share our videos with your drivers so they know exactly what to expect when arriving at Optimus Truck Wash.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrapper footer-inner">
+    <span>© <span id="year"></span> Optimus Truck Wash. All rights reserved.</span>
+    <span>
+      Designed for large vehicle care ·
+      <a href="#top">Back to top ↑</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  // Update footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
